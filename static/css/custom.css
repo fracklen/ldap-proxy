@@ -1,0 +1,16 @@
+span {
+    clear: none;
+/*    border: 1px solid red;*/
+}
+
+a {
+    clear: none;
+}
+
+span.input-group-addon {
+    width: 120px;
+}
+
+div.input-group {
+    margin-bottom: 3px;
+}

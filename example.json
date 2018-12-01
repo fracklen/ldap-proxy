@@ -1,0 +1,39 @@
+{
+  "proxies": [
+    {
+      "name": "secret_service",
+      "url": "http://secret-service.example.org:1234",
+      "allowed_groups": [
+        "CN=users,CN=Users,DC=example,DC=org"
+        "CN=admins,CN=Users,DC=example,DC=org"
+      ],
+      "block_access": [
+        {
+          "name": "write_access",
+          "method": "POST",
+          "url_regexp": ".*",
+          "query_regexp": ".*",
+          "unless_groups": ["CN=admins,CN=Users,DC=example,DC=org"]
+        }
+      ]
+    }
+  ],
+  "secrets": {
+    "hashKey": "64 random bytes base64 encoded",
+    "blockKey": "32 random bytes base64 endoded"
+  },
+  "ldap": {
+      "server": "ldap.example.org",
+      "basedn": "DC=example,DC=org",
+      "binduser": "binduser",
+      "bindpass": "very-secret-password",
+      "userattribute": "(sAMAccountName=%s)",
+      "groupmemberattribute": "(memberOf=%s)",
+      "debug": true,
+      "insecure": false
+  },
+  "logging": {
+    "brokers": ["kafka1.example.org:9092"],
+    "topic": "ldap-proxy"
+  }
+}

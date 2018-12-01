@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set +e
+
+docker pull golang:1.7
+docker run --rm -i --name ldap-proxy-test -v "$(pwd)":/usr/src/github.com/fracklen/ldap-proxy -w /usr/src/github.com/fracklen/ldap-proxy golang:1.7 ./scripts/test_in_docker.sh
